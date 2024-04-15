@@ -29,9 +29,10 @@ type (
 )
 
 func ConnectDB(connectionString string) (Database, error) {
+
 	db, err := gorm.Open(postgres.Open(connectionString), &gorm.Config{})
 	if err != nil {
-		log.Fatal("DB connect error:" + err.Error())
+		log.Fatal("Fail to connect to db")
 	}
 
 	err = db.Use(GetPlugin())
