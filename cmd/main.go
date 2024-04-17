@@ -5,7 +5,7 @@ import (
 	"github.com/unawaretub86/project-una-yip-inventory/internal/infrastructure/dependencies"
 )
 
-const basePath = ""
+const basePath = "/inventory-app"
 
 func main() {
 	container := dependencies.StartDependencies()

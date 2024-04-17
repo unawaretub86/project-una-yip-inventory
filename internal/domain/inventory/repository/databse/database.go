@@ -1,21 +1,23 @@
 package database
 
 import (
-	database "github.com/unawaretub86/project-una-yip-inventory/internal/infrastructure/configuration/database"
+	"github.com/unawaretub86/project-una-yip-inventory/internal/domain/inventory/entities"
+	db "github.com/unawaretub86/project-una-yip-inventory/internal/infrastructure/configuration/database"
 	"github.com/unawaretub86/project-una-yip-inventory/internal/infrastructure/dependencies"
 )
 
 type (
 	Database interface {
+		GetInventory() (*entities.Inventory, error)
 	}
 
-	databaseDomain struct {
-		db database.Database
+	database struct {
+		db db.Database
 	}
 )
 
 func NewDatabase(container *dependencies.Container) Database {
-	return &databaseDomain{
+	return &database{
 		db: container.Database(),
 	}
 }

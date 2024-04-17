@@ -5,7 +5,11 @@ import (
 	"github.com/unawaretub86/project-una-yip-inventory/internal/infrastructure/dependencies"
 )
 
-const suffixErr = "Error"
+const (
+	suffixErr  = "Error"
+	suffixInv = "Inventory"
+)
+
 
 type (
 	Handler struct {
