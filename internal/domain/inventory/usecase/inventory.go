@@ -5,3 +5,11 @@ import "github.com/unawaretub86/project-una-yip-inventory/internal/domain/invent
 func (useCase useCase) GetInventory() (*entities.Inventory, error) {
 	return useCase.repo.GetInventory()
 }
+
+func (useCase useCase) CreateItem(item *entities.TechItem) (*entities.TechItem, error) {
+	return useCase.repo.CreateItem(item)
+}
+
+func (useCase useCase) UpdateItem(id int64, item *entities.TechItem) (*entities.TechItem, error) {
+	return useCase.repo.UpdateItem(id, item)
+}

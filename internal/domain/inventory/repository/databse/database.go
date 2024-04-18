@@ -9,6 +9,8 @@ import (
 type (
 	Database interface {
 		GetInventory() (*entities.Inventory, error)
+		CreateItem(*entities.TechItem) (*entities.TechItem, error)
+		UpdateItem(int64, *entities.TechItem) (*entities.TechItem, error)
 	}
 
 	database struct {

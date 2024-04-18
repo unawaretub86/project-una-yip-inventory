@@ -2,7 +2,7 @@ package entities
 
 type (
 	TechItem struct {
-		ID          int
+		ID          int64
 		Name        string
 		Category    string
 		Description string

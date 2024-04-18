@@ -16,3 +16,7 @@ func (handler Handler) GetInventory(c *gin.Context) {
 
 	utils.EndWithStatus(c, http.StatusOK, suffixInv, inventory)
 }
+
+func (handler Handler) Ping(c *gin.Context) {
+	utils.EndWithStatus(c, http.StatusOK, suffixInv, "pong")
+}
