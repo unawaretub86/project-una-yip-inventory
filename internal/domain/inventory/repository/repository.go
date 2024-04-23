@@ -2,7 +2,7 @@ package repository
 
 import (
 	"github.com/unawaretub86/project-una-yip-inventory/internal/domain/inventory/entities"
-	database "github.com/unawaretub86/project-una-yip-inventory/internal/domain/inventory/repository/databse"
+	database "github.com/unawaretub86/project-una-yip-inventory/internal/domain/inventory/repository/database"
 	"github.com/unawaretub86/project-una-yip-inventory/internal/infrastructure/dependencies"
 )
 

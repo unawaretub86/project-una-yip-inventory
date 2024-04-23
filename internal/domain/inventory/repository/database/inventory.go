@@ -5,10 +5,10 @@ import (
 	"gorm.io/gorm"
 )
 
-func (database database) GetInventory() (*entities.Inventory, error) {
+func (database DatabaseInventory) GetInventory() (*entities.Inventory, error) {
 	Inventory := &entities.Inventory{}
 
-	result := database.db.Connection().Find(&Inventory)
+	result := database.dataBase.Connection().Find(&Inventory)
 
 	if result.Error != nil {
 		return nil, result.Error
@@ -17,7 +17,7 @@ func (database database) GetInventory() (*entities.Inventory, error) {
 	return Inventory, nil
 }
 
-func (database database) GetItemById(id int64) (*entities.TechItem, error)  {
+func (database DatabaseInventory) GetItemById(id int64) (*entities.TechItem, error)  {
 	result, err := database.getItem(id)
 	if err.Error != nil {
 		return nil, err.Error
@@ -26,8 +26,8 @@ func (database database) GetItemById(id int64) (*entities.TechItem, error)  {
 	return result, nil
 }
 
-func (database database) CreateItem(item *entities.TechItem) (*entities.TechItem, error) {
-	result := database.db.Connection().Create(&item)
+func (database DatabaseInventory) CreateItem(item *entities.TechItem) (*entities.TechItem, error) {
+	result := database.dataBase.Connection().Create(&item)
 	if result.Error != nil {
 		return nil, result.Error
 	}
@@ -35,7 +35,7 @@ func (database database) CreateItem(item *entities.TechItem) (*entities.TechItem
 	return item, nil
 }
 
-func (database database) UpdateItem(id int64, item *entities.TechItem) (*entities.TechItem, error) {
+func (database DatabaseInventory) UpdateItem(id int64, item *entities.TechItem) (*entities.TechItem, error) {
 	resultData, err := database.getItem(id)
 	if err.Error != nil {
 		return nil, err.Error
@@ -43,7 +43,7 @@ func (database database) UpdateItem(id int64, item *entities.TechItem) (*entitie
 
 	item.ID = resultData.ID
 
-	result := database.db.Connection().
+	result := database.dataBase.Connection().
 	Where("id = ?", item.ID).
 	Updates(item)
 
@@ -54,10 +54,10 @@ func (database database) UpdateItem(id int64, item *entities.TechItem) (*entitie
 	return item, nil
 }
 
-func (database database) getItem(id int64) (*entities.TechItem, *gorm.DB)  {
+func (database DatabaseInventory) getItem(id int64) (*entities.TechItem, *gorm.DB)  {
 	item := &entities.TechItem{}
 
-	result := database.db.Connection().
+	result := database.dataBase.Connection().
 	Where("id = ?", id).
 	Take(&item)
 

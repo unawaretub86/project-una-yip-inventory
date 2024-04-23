@@ -15,13 +15,13 @@ type (
 		UpdateItem(int64, *entities.TechItem) (*entities.TechItem, error)
 	}
 
-	database struct {
-		db db.Database
+	DatabaseInventory struct {
+		dataBase db.Database
 	}
 )
 
 func NewDatabase(container *dependencies.Container) Database {
-	return &database{
-		db: container.Database(),
+	return &DatabaseInventory{
+		dataBase: container.Database(),
 	}
 }
