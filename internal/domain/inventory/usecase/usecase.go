@@ -9,6 +9,8 @@ import (
 type (
 	UseCase interface {
 		GetInventory() (*entities.Inventory, error)
+		GetItemById(int64) (*entities.TechItem, error)
+
 		CreateItem(*entities.TechItem) (*entities.TechItem, error)
 		UpdateItem(int64, *entities.TechItem) (*entities.TechItem, error)
 	}

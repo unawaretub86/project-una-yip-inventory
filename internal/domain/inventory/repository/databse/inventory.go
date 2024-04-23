@@ -17,6 +17,15 @@ func (database database) GetInventory() (*entities.Inventory, error) {
 	return Inventory, nil
 }
 
+func (database database) GetItemById(id int64) (*entities.TechItem, error)  {
+	result, err := database.getItem(id)
+	if err.Error != nil {
+		return nil, err.Error
+	}
+
+	return result, nil
+}
+
 func (database database) CreateItem(item *entities.TechItem) (*entities.TechItem, error) {
 	result := database.db.Connection().Create(&item)
 	if result.Error != nil {

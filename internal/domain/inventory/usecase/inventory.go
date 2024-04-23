@@ -13,3 +13,7 @@ func (useCase useCase) CreateItem(item *entities.TechItem) (*entities.TechItem, 
 func (useCase useCase) UpdateItem(id int64, item *entities.TechItem) (*entities.TechItem, error) {
 	return useCase.repo.UpdateItem(id, item)
 }
+
+func (useCase useCase) GetItemById(id int64) (*entities.TechItem, error)  {
+	return useCase.repo.GetItemById(id)
+}

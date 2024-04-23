@@ -4,11 +4,29 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/unawaretub86/project-una-yip-inventory/internal/domain/inventory/entities"
 	"github.com/unawaretub86/project-una-yip-inventory/utils"
 )
 
 func (handler Handler) GetInventory(c *gin.Context) {
 	inventory, err := handler.UseCase.GetInventory()
+	if err != nil {
+		utils.EndWithStatusError(c, http.StatusBadRequest, suffixErr, err)
+		return
+	}
+
+	utils.EndWithStatus(c, http.StatusOK, suffixInv, inventory)
+}
+
+func (handler Handler) GetItemById(c *gin.Context) {
+	item := entities.TechItem{}
+
+	if err := c.ShouldBindUri(&item); err != nil {
+		utils.EndWithStatusError(c, http.StatusBadRequest, suffixErr, err)
+		return
+	}
+
+	inventory, err := handler.UseCase.GetItemById(item.ID)
 	if err != nil {
 		utils.EndWithStatusError(c, http.StatusBadRequest, suffixErr, err)
 		return

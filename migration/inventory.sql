@@ -8,3 +8,9 @@ CREATE TABLE tech_items (
     quantity INTEGER,
     price NUMERIC(10, 2)
 );
+
+ALTER TABLE tech_items ADD CONSTRAINT unique_name_constraint UNIQUE name;
+ALTER TABLE tech_items ALTER COLUMN category SET NOT NULL;
+ALTER TABLE tech_items ALTER COLUMN quantity SET NOT NULL;
+ALTER TABLE tech_items ALTER COLUMN description SET NOT NULL;
+ALTER TABLE tech_items ALTER COLUMN price SET NOT NULL;

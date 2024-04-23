@@ -25,4 +25,5 @@ func (read *read) RegisterRoutes(basePath string, r *gin.Engine) {
 	v1Group := r.Group(basePath + "/v1")
 
 	v1Group.GET("/inventory", invHandler.GetInventory)
+	v1Group.GET("/item/:id", invHandler.GetItemById)
 }

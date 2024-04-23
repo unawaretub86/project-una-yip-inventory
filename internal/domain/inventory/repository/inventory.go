@@ -13,3 +13,7 @@ func (repository repository) CreateItem(item *entities.TechItem) (*entities.Tech
 func (repository repository) UpdateItem(id int64,item *entities.TechItem) (*entities.TechItem, error) {
 	return repository.database.UpdateItem(id, item)
 }
+
+func (repository repository) GetItemById(id int64) (*entities.TechItem, error)  {
+	return repository.database.GetItemById(id)
+}
